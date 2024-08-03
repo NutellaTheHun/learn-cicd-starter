@@ -21,3 +21,34 @@ func GetAPIKey(headers http.Header) (string, error) {
 
 	return splitAuth[1], nil
 }
+
+/*
+func TestAuth(t *testing.T) {
+	tests := map[string]struct {
+		input http.Header
+		want  string
+	}{
+		"basic":        {input: createTestHeader("Authorization", "ApiKey  69420"), want: "69420"},
+		"no value":     {input: createTestHeader("Authorization", ""), want: "no authorization header included"},
+		"bad val size": {input: createTestHeader("Authorization", "ApiKey"), want: "malformed authorization header"},
+	}
+
+	for name, tc := range tests {
+		t.Run(name, func(t *testing.T) {
+			got, err := GetAPIKey(tc.input)
+			if err != nil {
+				t.Fatalf(err.Error())
+			}
+			if !reflect.DeepEqual(tc.want, got) {
+				t.Fatalf("exected: %#v, got: %#v", tc.want, got)
+			}
+		})
+	}
+}
+
+func createTestHeader(headerKey, val string) http.Header {
+	result := http.Header{}
+	result.Set(headerKey, val)
+	return result
+}
+*/

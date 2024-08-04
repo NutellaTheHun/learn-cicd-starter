@@ -20,6 +20,20 @@ jobs:
           
           - name: build
             run: ./scripts/buildprod.sh
+
+          - id: 'auth'
+            uses: 'google-github-actions/auth@v2'
+            with:
+                credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+    
+          - name: 'Set up Cloud SDK'
+            uses: 'google-github-actions/setup-gcloud@v2'
+    
+          - name: 'build docker'
+            run: docker build -t nbrilmayer3/notely:latest .
+
+          - name: 'push to gcp'
+            run: gcloud builds submit --tag us-central1-docker.pkg.dev/notely-431517/notely-ar-repo/nbrilmayer3/notely:latest .
             
 
         

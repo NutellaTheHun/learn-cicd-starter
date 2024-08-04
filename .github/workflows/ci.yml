@@ -21,7 +21,7 @@ jobs:
       - name: My Tests
         run: go test -cover ./...
 
-  Style:
+  Formatting:
       name: Style
       runs-on: ubuntu-latest
 
